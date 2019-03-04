@@ -5,6 +5,14 @@ Created on Sat Mar  2 17:47:57 2019
 @author: HePen
 """
 # train_data, test_data, train_label, test_label
+
+import matplotlib.pyplot as plt
+import numpy as np
+from sklearn import svm, datasets
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import confusion_matrix
+from sklearn.utils.multiclass import unique_labels
+
 def plot_confusion_matrix(y_true, y_pred, classes,
                           normalize=False,
                           title=None,
@@ -30,7 +38,7 @@ def plot_confusion_matrix(y_true, y_pred, classes,
         print('Confusion matrix, without normalization')
 
     print(cm)
-    fig, ax = plt.subplots(figsize = (10,8))
+    fig, ax = plt.subplots(figsize = (6,6*4/5))
     im = ax.imshow(cm, interpolation='nearest', cmap=cmap)
     ax.figure.colorbar(im, ax=ax)
     # We want to show all ticks...
@@ -57,13 +65,6 @@ def plot_confusion_matrix(y_true, y_pred, classes,
     fig.tight_layout()
     return ax
 
-
-import matplotlib.pyplot as plt
-
-from sklearn import svm, datasets
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import confusion_matrix
-from sklearn.utils.multiclass import unique_labels
 
 class_names = np.array(['bending', 'hammer-on','muting','normal','pull-off','sliding','vibrato'])
 
